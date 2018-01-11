@@ -10,6 +10,6 @@ object TcTools_HttpsGithubComEgorminTcToolsRefsHeadsMaster : GitVcsRoot({
     url = "https://github.com/egormin/TC_Tools"
     authMethod = password {
         userName = "egormin"
-        password = "zxx8d720d5a19ffb6c43646437a1f735151d9d54503ece7f8b6006fb0a20fc56e8c77640e1d5225aab9775d03cbe80d301b"
+        password = "credentialsJSON:ba9f4752-e382-4b45-913f-ba47d936d466"
     }
 })
