@@ -17,6 +17,7 @@ object Project : Project({
     vcsRoot(TcTools_HttpsGithubComEgorminTcToolsRefsHeadsMaster)
 
     buildType(TcTools_Install)
+    buildType(TcTools_SynchronizeToolsList)
 
     params {
         select("Choose Tool", "Tool", label = "Tool", display = ParameterDisplay.PROMPT,
