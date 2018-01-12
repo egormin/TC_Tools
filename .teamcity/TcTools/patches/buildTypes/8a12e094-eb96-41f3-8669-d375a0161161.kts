@@ -15,7 +15,7 @@ create("50967372-bc45-4f8c-908e-44012f72ed5b", BuildType({
     name = "Test"
 
     params {
-        text("text", "my text1 ", label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("text", "my textXXX", label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
     }
 
     vcs {
