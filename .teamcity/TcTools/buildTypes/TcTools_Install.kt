@@ -8,6 +8,10 @@ object TcTools_Install : BuildType({
     id = "TcTools_Install"
     name = "Install"
 
+    params {
+        param("Choose Tool1", "tool")
+    }
+
     vcs {
         root(TcTools.vcsRoots.TcTools_HttpsGithubComEgorminTcToolsRefsHeadsMaster)
 
