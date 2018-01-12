@@ -19,6 +19,10 @@ object Project : Project({
     buildType(TcTools_Install)
     buildType(TcTools_SynchronizeToolsList)
 
+    params {
+        param("env.User", "user")
+    }
+
     features {
         versionedSettings {
             id = "PROJECT_EXT_3"
