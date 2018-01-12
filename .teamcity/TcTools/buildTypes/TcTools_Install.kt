@@ -9,7 +9,7 @@ object TcTools_Install : BuildType({
     name = "Install"
 
     params {
-        select("Choose Tool1", "tool", label = "Tool", display = ParameterDisplay.PROMPT,
+        select("Choose Tool", "tool", label = "Tool", display = ParameterDisplay.PROMPT,
                 allowMultiple = true,
                 options = listOf("Java 1.7", "Java 1.8", "Gradle 3", "Gradle 4", "Terraform 3", "Terraform 4"))
     }
