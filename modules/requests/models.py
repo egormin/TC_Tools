@@ -20,10 +20,11 @@ from .packages.urllib3.fields import RequestField
 from .packages.urllib3.filepost import encode_multipart_formdata
 from .packages.urllib3.util import parse_url
 from .packages.urllib3.exceptions import (
-    DecodeError, ReadTimeoutError, ProtocolError, LocationParseError)
+    DecodeError, ReadTimeoutError, ProtocolError)
 from .exceptions import (
-    HTTPError, MissingSchema, InvalidURL, ChunkedEncodingError,
-    ContentDecodingError, ConnectionError, StreamConsumedError)
+    HTTPError, RequestException, MissingSchema, InvalidURL, 
+    ChunkedEncodingError, ContentDecodingError, ConnectionError, 
+    StreamConsumedError)
 from .utils import (
     guess_filename, get_auth_from_url, requote_uri,
     stream_decode_response_unicode, to_key_val_list, parse_header_links,
@@ -143,13 +144,12 @@ class RequestEncodingMixin(object):
             else:
                 fn = guess_filename(v) or k
                 fp = v
+            if isinstance(fp, str):
+                fp = StringIO(fp)
+            if isinstance(fp, bytes):
+                fp = BytesIO(fp)
 
-            if isinstance(fp, (str, bytes, bytearray)):
-                fdata = fp
-            else:
-                fdata = fp.read()
-
-            rf = RequestField(name=k, data=fdata,
+            rf = RequestField(name=k, data=fp.read(),
                               filename=fn, headers=fh)
             rf.make_multipart(content_type=ft)
             new_fields.append(rf)
@@ -351,10 +351,7 @@ class PreparedRequest(RequestEncodingMixin, RequestHooksMixin):
             return
 
         # Support for unicode domain names and paths.
-        try:
-            scheme, auth, host, port, path, query, fragment = parse_url(url)
-        except LocationParseError as e:
-            raise InvalidURL(*e.args)
+        scheme, auth, host, port, path, query, fragment = parse_url(url)
 
         if not scheme:
             raise MissingSchema("Invalid URL {0!r}: No schema supplied. "
@@ -618,7 +615,7 @@ class Response(object):
     def ok(self):
         try:
             self.raise_for_status()
-        except HTTPError:
+        except RequestException:
             return False
         return True
 
@@ -689,8 +686,6 @@ class Response(object):
         """Iterates over the response data, one line at a time.  When
         stream=True is set on the request, this avoids reading the
         content at once into memory for large responses.
-
-        .. note:: This method is not reentrant safe.
         """
 
         pending = None
