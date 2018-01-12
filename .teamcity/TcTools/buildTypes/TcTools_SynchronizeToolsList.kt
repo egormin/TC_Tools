@@ -16,7 +16,10 @@ object TcTools_SynchronizeToolsList : BuildType({
     steps {
         script {
             name = "=== Synchronization script running ==="
-            scriptContent = "./artifactory_getToolList.py"
+            scriptContent = """
+                ll
+                ./artifactory_getToolList.py
+            """.trimIndent()
         }
     }
 })
