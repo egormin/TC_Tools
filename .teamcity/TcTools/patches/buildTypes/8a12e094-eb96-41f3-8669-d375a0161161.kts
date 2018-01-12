@@ -23,7 +23,7 @@ create("50967372-bc45-4f8c-908e-44012f72ed5b", BuildType({
     val sss = "kurasan"
     //val inputStream: InputStream = File("/opt/TeamCity/fileX").inputStream()
     //val inputString = inputStream.bufferedReader().use { it.readText() }
-    //val process = Runtime.getRuntime().exec("curl https://raw.githubusercontent.com/egormin/TC_Tools/master/testFile.txt")
+    val process = Runtime.getRuntime().exec("curl https://raw.githubusercontent.com/egormin/TC_Tools/master/testFile.txt")
 
     //val reader = BufferedReader(InputStreamReader(process.inputStream))
     //val line: String
