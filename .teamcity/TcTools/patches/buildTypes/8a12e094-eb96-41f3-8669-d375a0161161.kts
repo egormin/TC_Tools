@@ -19,11 +19,13 @@ create("50967372-bc45-4f8c-908e-44012f72ed5b", BuildType({
     name = "Test"
 
     val sss = "kurasan"
-    //val inputStream : inputStream = File
+    val inputStream: InputStream = File("/tmp/fileX").inputStream()
+    val inputString = inputStream.bufferedReader().use { it.readText() }
+
     val path = System.getProperty("user.dir")
 
     params {
-        text("text", path, label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("text", inputString, label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
     }
 
     vcs {
