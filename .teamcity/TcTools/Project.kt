@@ -20,6 +20,7 @@ object Project : Project({
     buildType(TcTools_SynchronizeToolsList)
 
     params {
+        password("env.Pass", "credentialsJSON:d7d4c88c-7774-43d7-9660-f6640ff3f65b", label = "pass")
         param("env.User", "user")
     }
 
