@@ -20,6 +20,7 @@ object TcTools_SynchronizeToolsList : BuildType({
             scriptContent = """
                 chmod +x artifactory_getToolList.py
                 ./artifactory_getToolList.py
+                git push
             """.trimIndent()
         }
     }
