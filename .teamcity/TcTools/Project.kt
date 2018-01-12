@@ -19,12 +19,6 @@ object Project : Project({
     buildType(TcTools_Install)
     buildType(TcTools_SynchronizeToolsList)
 
-    params {
-        select("Choose Tool", "Tool", label = "Tool", display = ParameterDisplay.PROMPT,
-                allowMultiple = true,
-                options = listOf("Java 1.7", "Java 1.8", "Gradle 3", "Gradle 4", "Terraform 3", "Terraform 4"))
-    }
-
     features {
         versionedSettings {
             id = "PROJECT_EXT_3"
