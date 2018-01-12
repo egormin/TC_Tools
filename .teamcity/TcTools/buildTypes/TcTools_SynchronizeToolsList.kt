@@ -30,5 +30,10 @@ object TcTools_SynchronizeToolsList : BuildType({
             pattern = "__myUser__"
             replacement = "%env.User%"
         }
+        replaceContent {
+            fileRules = "artifactory_getToolList.py"
+            pattern = "__myPassword__"
+            replacement = "%env.Pass%"
+        }
     }
 })
