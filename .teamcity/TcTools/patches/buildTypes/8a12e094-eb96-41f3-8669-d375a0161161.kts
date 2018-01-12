@@ -14,6 +14,10 @@ create("50967372-bc45-4f8c-908e-44012f72ed5b", BuildType({
     id = "TcTools_Test"
     name = "Test"
 
+    params {
+        text("text", "my text", label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
+    }
+
     vcs {
         root("TcTools_HttpsGithubComEgorminTcToolsRefsHeadsMaster")
 
