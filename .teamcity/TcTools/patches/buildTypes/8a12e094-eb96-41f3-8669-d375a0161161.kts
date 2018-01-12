@@ -21,16 +21,16 @@ create("50967372-bc45-4f8c-908e-44012f72ed5b", BuildType({
     val sss = "kurasan"
     //val inputStream: InputStream = File("/opt/TeamCity/fileX").inputStream()
     //val inputString = inputStream.bufferedReader().use { it.readText() }
-    val process = ProcessBuilder("curl", "https://raw.githubusercontent.com/egormin/TC_Tools/master/testFile.txt").start()
-    process.inputStream.reader(Charsets.UTF_8).use {
-        val xxx1 = it.readText()
-        //println(xxx1)
-    }
+    val process = Runtime.getRuntime().exec("curl https://raw.githubusercontent.com/egormin/TC_Tools/master/testFile.txt")
+
+    val reader = BufferedReader(InputStreamReader(process.inputStream))
+    val line: String
+    line = reader.readLine()
 
     val path = System.getProperty("user.dir")
 
     params {
-        text("text", xxx1, label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("text", line, label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
     }
 
     vcs {
