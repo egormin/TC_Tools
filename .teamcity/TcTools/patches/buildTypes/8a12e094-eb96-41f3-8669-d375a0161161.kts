@@ -13,5 +13,10 @@ create("50967372-bc45-4f8c-908e-44012f72ed5b", BuildType({
     uuid = "8a12e094-eb96-41f3-8669-d375a0161161"
     id = "TcTools_Test"
     name = "Test"
+
+    vcs {
+        root("TcTools_HttpsGithubComEgorminTcToolsRefsHeadsMaster")
+
+    }
 }))
 
