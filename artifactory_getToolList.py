@@ -1,6 +1,8 @@
 #!/usr/bin/env python
-import requests
 
+import sys
+sys.path.append("modules")
+import requests
 
 artifactory_url = "http://35.192.120.104"
 user = "__myUser__"
