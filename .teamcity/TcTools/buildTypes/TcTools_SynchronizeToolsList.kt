@@ -1,6 +1,7 @@
 package TcTools.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2017_2.*
+import jetbrains.buildServer.configs.kotlin.v2017_2.buildFeatures.replaceContent
 import jetbrains.buildServer.configs.kotlin.v2017_2.buildSteps.script
 
 object TcTools_SynchronizeToolsList : BuildType({
@@ -20,6 +21,14 @@ object TcTools_SynchronizeToolsList : BuildType({
                 ls -alh
                 ./artifactory_getToolList.py
             """.trimIndent()
+        }
+    }
+
+    features {
+        replaceContent {
+            fileRules = "artifactory_getToolList.py"
+            pattern = "__myUser__"
+            replacement = "%env.User%"
         }
     }
 })
