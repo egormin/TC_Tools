@@ -19,9 +19,11 @@ create("50967372-bc45-4f8c-908e-44012f72ed5b", BuildType({
     name = "Test"
 
     val sss = "kurasan"
+    val inputStream : inputStream = File
+    val path = System.getProperty("user.dir")
 
     params {
-        text("text", sss, label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("text", path, label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
     }
 
     vcs {
