@@ -8,6 +8,7 @@ object TcTools_HttpsGithubComEgorminTcToolsRefsHeadsMaster : GitVcsRoot({
     id = "TcTools_HttpsGithubComEgorminTcToolsRefsHeadsMaster"
     name = "https://github.com/egormin/TC_Tools#refs/heads/master"
     url = "git@github.com:egormin/TC_Tools.git"
+    branchSpec = "+:refs/heads/*"
     authMethod = password {
         userName = "git"
         password = "credentialsJSON:8badbcc2-7a86-4432-b9a1-2b4a44c51888"
