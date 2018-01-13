@@ -9,6 +9,7 @@ import java.io.File
 import java.io.InputStream
 import java.io.InputStreamReader
 import java.io.BufferedReader
+import java.time.LocalDateTime
 
 
 /*
@@ -32,9 +33,10 @@ create("50967372-bc45-4f8c-908e-44012f72ed5b", BuildType({
 
     //val path = System.getProperty("user.dir")
     val myText = "fgsdfd"
+    val current = LocalDateTime.now()
 
     params {
-        text("text", myText, label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("text", current, label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
     }
 
     vcs {
