@@ -16,6 +16,7 @@ object Project : Project({
 
     vcsRoot(TcTools_HttpsGithubComEgorminTcToolsRefsHeadsMaster)
 
+    buildType(TcTools_Test)
     buildType(TcTools_Install)
     buildType(TcTools_SynchronizeToolsList)
 
@@ -30,7 +31,7 @@ object Project : Project({
             mode = VersionedSettings.Mode.ENABLED
             buildSettingsMode = VersionedSettings.BuildSettingsMode.PREFER_SETTINGS_FROM_VCS
             rootExtId = TcTools_HttpsGithubComEgorminTcToolsRefsHeadsMaster.id
-            showChanges = true
+            showChanges = false
             settingsFormat = VersionedSettings.Format.KOTLIN
             storeSecureParamsOutsideOfVcs = true
         }
