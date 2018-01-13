@@ -5,6 +5,8 @@ import jetbrains.buildServer.configs.kotlin.v2017_2.buildFeatures.AutoMerge
 import jetbrains.buildServer.configs.kotlin.v2017_2.buildFeatures.FileContentReplacer
 import jetbrains.buildServer.configs.kotlin.v2017_2.buildFeatures.merge
 import jetbrains.buildServer.configs.kotlin.v2017_2.buildFeatures.replaceContent
+import jetbrains.buildServer.configs.kotlin.v2017_2.buildSteps.ScriptBuildStep
+import jetbrains.buildServer.configs.kotlin.v2017_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2017_2.ui.*
 
 /*
@@ -13,6 +15,37 @@ To apply the patch, change the buildType with uuid = '8a12e094-eb96-41f3-8669-d3
 accordingly and delete the patch script.
 */
 changeBuildType("8a12e094-eb96-41f3-8669-d375a0161161") {
+    expectSteps {
+        script {
+            name = "TEZT"
+            scriptContent = """
+                ls
+                pwd
+                echo "ddd" >> README.md
+                git clone git@github.com:egormin/TC_Tools.git
+                cd TC_Tools 
+                sed -i 's/SUPER/SUPER/g' .teamcity/TcTools/buildTypes/TcTools_Test.kt
+                git commit -am "changed"
+                git push -u origin master
+            """.trimIndent()
+        }
+    }
+    steps {
+        update<ScriptBuildStep>(0) {
+            scriptContent = """
+                ls
+                pwd
+                git clone git@github.com:egormin/TC_Tools.git
+                cd TC_Tools 
+                whatToFind=`cat .teamcity/TcTools/buildTypes/TcTools_Test.kt | grep "val curr"`
+                #sed -i 's/SUPER/SUPER/g' .teamcity/TcTools/buildTypes/TcTools_Test.kt
+                echo ${'$'}whatToFind
+                #git commit -am "changed"
+                #git push -u origin master
+            """.trimIndent()
+        }
+    }
+
     features {
         val feature1 = find<AutoMerge> {
             merge {
