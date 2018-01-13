@@ -32,6 +32,7 @@ changeBuildType("8a12e094-eb96-41f3-8669-d375a0161161") {
             }
         }
         feature2.apply {
+            enabled = false
             pattern = """"__kurr__""""
         }
     }
