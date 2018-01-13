@@ -9,7 +9,7 @@ object TcTools_Test : BuildType({
     id = "TcTools_Test"
     name = "Test"
 
-    val blabla = "_kurr_"
+    val blabla = "SUPER"
     val current = LocalDateTime.now().toString()
 
     params {
