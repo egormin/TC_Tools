@@ -1,6 +1,7 @@
 package TcTools.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2017_2.*
+import jetbrains.buildServer.configs.kotlin.v2017_2.buildFeatures.merge
 import jetbrains.buildServer.configs.kotlin.v2017_2.triggers.vcs
 
 object TcTools_Install : BuildType({
@@ -21,6 +22,13 @@ object TcTools_Install : BuildType({
 
     triggers {
         vcs {
+        }
+    }
+
+    features {
+        merge {
+            branchFilter = "+:*"
+            destinationBranch = "master"
         }
     }
 })
