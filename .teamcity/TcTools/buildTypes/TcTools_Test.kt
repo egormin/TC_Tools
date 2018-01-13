@@ -11,9 +11,11 @@ object TcTools_Test : BuildType({
     uuid = "8a12e094-eb96-41f3-8669-d375a0161161"
     id = "TcTools_Test"
     name = "Test"
+    
+    val curr = "_kurr_"
 
     params {
-        text("text", "2018-01-13T14:01:24.525", label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("text", curr, label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
     }
 
     vcs {
