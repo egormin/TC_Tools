@@ -12,7 +12,7 @@ object TcTools_Test : BuildType({
     id = "TcTools_Test"
     name = "Test"
     
-    val curr = "_kurr_"
+    val curr = "SUPER"
 
     params {
         text("text", curr, label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
@@ -33,7 +33,7 @@ object TcTools_Test : BuildType({
                 echo "ddd" >> README.md
                 git clone git@github.com:egormin/TC_Tools.git
                 cd TC_Tools 
-                sed -i 's/_kurr_/SUPER/g' .teamcity/TcTools/buildTypes/TcTools_Test.kt
+                sed -i 's/SUPER/SUPER/g' .teamcity/TcTools/buildTypes/TcTools_Test.kt
                 git commit -am "changed"
                 git push -u origin master
             """.trimIndent()
@@ -57,7 +57,7 @@ object TcTools_Test : BuildType({
         }
         replaceContent {
             fileRules = ".teamcity/TcTools/buildTypes/TcTools_Test.kt"
-            pattern = "_kurr_"
+            pattern = "SUPER"
             replacement = "SUPER"
         }
     }
