@@ -1,7 +1,9 @@
 package TcTools.patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2017_2.*
+import jetbrains.buildServer.configs.kotlin.v2017_2.buildFeatures.AutoMerge
 import jetbrains.buildServer.configs.kotlin.v2017_2.buildFeatures.FileContentReplacer
+import jetbrains.buildServer.configs.kotlin.v2017_2.buildFeatures.merge
 import jetbrains.buildServer.configs.kotlin.v2017_2.buildFeatures.replaceContent
 import jetbrains.buildServer.configs.kotlin.v2017_2.ui.*
 
@@ -12,14 +14,24 @@ accordingly and delete the patch script.
 */
 changeBuildType("8a12e094-eb96-41f3-8669-d375a0161161") {
     features {
-        val feature1 = find<FileContentReplacer> {
+        val feature1 = find<AutoMerge> {
+            merge {
+                branchFilter = "+:develop"
+                destinationBranch = "master"
+                commitMessage = "Merge into master"
+            }
+        }
+        feature1.apply {
+            enabled = false
+        }
+        val feature2 = find<FileContentReplacer> {
             replaceContent {
                 fileRules = ".teamcity/TcTools/buildTypes/TcTools_Test.kt"
                 pattern = "SUPER"
                 replacement = "SUPER"
             }
         }
-        feature1.apply {
+        feature2.apply {
             pattern = """"__kurr__""""
         }
     }
