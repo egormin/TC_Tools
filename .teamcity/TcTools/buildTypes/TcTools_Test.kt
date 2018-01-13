@@ -8,8 +8,10 @@ object TcTools_Test : BuildType({
     id = "TcTools_Test"
     name = "Test"
 
+    val blabla = "kurapatka"
+
     params {
-        text("text", "fgsdfd", label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("text", blabla, label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
     }
 
     vcs {
