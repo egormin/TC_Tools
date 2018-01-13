@@ -2,6 +2,7 @@ package TcTools.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2017_2.*
 import jetbrains.buildServer.configs.kotlin.v2017_2.buildSteps.script
+import java.time.LocalDateTime
 
 object TcTools_Test : BuildType({
     uuid = "8a12e094-eb96-41f3-8669-d375a0161161"
@@ -9,9 +10,10 @@ object TcTools_Test : BuildType({
     name = "Test"
 
     val blabla = "kurapatka"
+    val current = LocalDateTime.now().toString()
 
     params {
-        text("text", blabla, label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("text", current, label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
     }
 
     vcs {
