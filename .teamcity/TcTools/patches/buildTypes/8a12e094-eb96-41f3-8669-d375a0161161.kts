@@ -32,11 +32,11 @@ create("50967372-bc45-4f8c-908e-44012f72ed5b", BuildType({
     //line = reader.readLine()
 
     //val path = System.getProperty("user.dir")
-    val myText = "fgsdfd"
-    val current = LocalDateTime.now().toString()
+    val myText = "__myList__"
+
 
     params {
-        text("text", current, label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("text", myText, label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
     }
 
     vcs {
