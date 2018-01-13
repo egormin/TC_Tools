@@ -38,10 +38,10 @@ changeBuildType("8a12e094-eb96-41f3-8669-d375a0161161") {
                 git clone git@github.com:egormin/TC_Tools.git
                 cd TC_Tools 
                 whatToFind=`cat .teamcity/TcTools/buildTypes/TcTools_Test.kt | grep "val curr"`
-                sed -i 's/${'$'}whatToFind/ShsUJsk/g' .teamcity/TcTools/buildTypes/TcTools_Test.kt
+                sed -i "s/${'$'}whatToFind/ShsUJsk/g" .teamcity/TcTools/buildTypes/TcTools_Test.kt
                 echo ${'$'}whatToFind
-                #git commit -am "changed"
-                #git push -u origin master
+                git commit -am "changed"
+                git push -u origin master
             """.trimIndent()
         }
     }
