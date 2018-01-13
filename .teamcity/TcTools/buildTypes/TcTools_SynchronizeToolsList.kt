@@ -17,11 +17,16 @@ object TcTools_SynchronizeToolsList : BuildType({
     steps {
         script {
             name = "=== Synchronization script running ==="
+            enabled = false
             scriptContent = """
                 chmod +x artifactory_getToolList.py
                 ./artifactory_getToolList.py
                 git push
             """.trimIndent()
+        }
+        script {
+            name = "push"
+            scriptContent = "git push"
         }
     }
 
