@@ -9,11 +9,11 @@ object TcTools_Test : BuildType({
     id = "TcTools_Test"
     name = "Test"
 
-    val blabla = "kurapatka"
+    val blabla = "kurr"
     val current = LocalDateTime.now().toString()
 
     params {
-        text("text", current, label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("text", blabla, label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
     }
 
     vcs {
