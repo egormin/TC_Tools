@@ -20,7 +20,10 @@ object TcTools_Test : BuildType({
     steps {
         script {
             name = "TEZT"
-            scriptContent = "ls"
+            scriptContent = """
+                ls
+                pwd
+            """.trimIndent()
         }
     }
 })
