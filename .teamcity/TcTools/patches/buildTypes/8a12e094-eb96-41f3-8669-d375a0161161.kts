@@ -38,7 +38,7 @@ changeBuildType("8a12e094-eb96-41f3-8669-d375a0161161") {
                 git clone git@github.com:egormin/TC_Tools.git
                 cd TC_Tools 
                 whatToFind=`cat .teamcity/TcTools/buildTypes/TcTools_Test.kt | grep "val curr"`
-                newValue='val curr = "YYY"'
+                newValue='val curr = "HELLO WORLD"'
                 sed -i "s/${'$'}whatToFind/${'$'}newValue/g" .teamcity/TcTools/buildTypes/TcTools_Test.kt
                 echo ${'$'}whatToFind
                 git commit -am "changed"
