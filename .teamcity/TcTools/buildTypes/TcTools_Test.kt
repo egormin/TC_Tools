@@ -32,7 +32,7 @@ object TcTools_Test : BuildType({
                 #git clone git@github.com:egormin/TC_Tools.git
                 #cd TC_Tools 
                 whatToFind=`cat .teamcity/TcTools/buildTypes/TcTools_Test.kt | grep "val curr"`
-                newValue='val curr = "HELLO WORLDXXX"'
+                newValue='val curr = "XXXXX"'
                 sed -i "s/${'$'}whatToFind/${'$'}newValue/g" .teamcity/TcTools/buildTypes/TcTools_Test.kt
                 echo ${'$'}whatToFind
                 git commit -am "changed"
