@@ -12,7 +12,7 @@ object TcTools_Test : BuildType({
     id = "TcTools_Test"
     name = "Test"
     
-val curr = "YYY"
+val curr = "HELLO WORLD"
 
     params {
         text("text", curr, label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
