@@ -11,6 +11,14 @@ To apply the patch, change the buildType with uuid = '8a12e094-eb96-41f3-8669-d3
 accordingly and delete the patch script.
 */
 changeBuildType("8a12e094-eb96-41f3-8669-d375a0161161") {
+    params {
+        add {
+            select("Tools List", "", label = "List", display = ParameterDisplay.PROMPT,
+                    allowMultiple = true,
+                    options = listOf("git", "java", "python"))
+        }
+    }
+
     expectSteps {
         script {
             name = "TEZT"
