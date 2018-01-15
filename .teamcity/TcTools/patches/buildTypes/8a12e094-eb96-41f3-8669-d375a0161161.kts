@@ -15,6 +15,14 @@ To apply the patch, change the buildType with uuid = '8a12e094-eb96-41f3-8669-d3
 accordingly and delete the patch script.
 */
 changeBuildType("8a12e094-eb96-41f3-8669-d375a0161161") {
+    vcs {
+
+        check(checkoutMode == CheckoutMode.AUTO) {
+            "Unexpected option value: checkoutMode = $checkoutMode"
+        }
+        checkoutMode = CheckoutMode.ON_AGENT
+    }
+
     expectSteps {
         script {
             name = "TEZT"
