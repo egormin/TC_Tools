@@ -16,7 +16,7 @@ object TcTools_Test : BuildType({
         text("text", "XXXXX", label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
         select("Tools List", "yyy", label = "List", display = ParameterDisplay.PROMPT,
                 allowMultiple = true,
-                options = listOf("git", "java", "python"))
+options = listOf("git", "java", "python", "gradle", "maven"))
     }
 
     vcs {
