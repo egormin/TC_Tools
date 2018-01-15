@@ -11,16 +11,15 @@ object TcTools_Test : BuildType({
     uuid = "8a12e094-eb96-41f3-8669-d375a0161161"
     id = "TcTools_Test"
     name = "Test"
-    
-val curr = "HELLO WORLDXXX"
 
     params {
-        text("text", curr, label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
+        text("text", "HELLO WORLD", label = "text", display = ParameterDisplay.PROMPT, allowEmpty = true)
     }
 
     vcs {
         root(TcTools.vcsRoots.TcTools_HttpsGithubComEgorminTcToolsRefsHeadsMaster)
 
+        checkoutMode = CheckoutMode.ON_AGENT
         cleanCheckout = true
     }
 
@@ -30,18 +29,22 @@ val curr = "HELLO WORLDXXX"
             scriptContent = """
                 ls
                 pwd
-                echo "ddd" >> README.md
-                git clone git@github.com:egormin/TC_Tools.git
-                cd TC_Tools 
-                sed -i 's/SUPER/SUPER/g' .teamcity/TcTools/buildTypes/TcTools_Test.kt
+                #git clone git@github.com:egormin/TC_Tools.git
+                #cd TC_Tools 
+                whatToFind=`cat .teamcity/TcTools/buildTypes/TcTools_Test.kt | grep "val curr"`
+                newValue='val curr = "HELLO WORLDXXX"'
+                sed -i "s/${'$'}whatToFind/${'$'}newValue/g" .teamcity/TcTools/buildTypes/TcTools_Test.kt
+                echo ${'$'}whatToFind
                 git commit -am "changed"
-                git push -u origin master
+                #git push -u origin master
+                git push
             """.trimIndent()
         }
     }
 
     features {
         merge {
+            enabled = false
             branchFilter = "+:develop"
             destinationBranch = "master"
             commitMessage = "Merge into master"
@@ -56,8 +59,9 @@ val curr = "HELLO WORLDXXX"
             }
         }
         replaceContent {
+            enabled = false
             fileRules = ".teamcity/TcTools/buildTypes/TcTools_Test.kt"
-            pattern = "SUPER"
+            pattern = """"__kurr__""""
             replacement = "SUPER"
         }
     }

@@ -21,6 +21,7 @@ object TcTools_Install : BuildType({
 
     triggers {
         vcs {
+            enabled = false
         }
     }
 })
