@@ -2,6 +2,7 @@ package TcTools.patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2017_2.*
 import jetbrains.buildServer.configs.kotlin.v2017_2.BuildType
+import jetbrains.buildServer.configs.kotlin.v2017_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2017_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2017_2.ui.*
 
@@ -18,6 +19,16 @@ create("50967372-bc45-4f8c-908e-44012f72ed5b", BuildType({
     vcs {
         root("TcTools_HttpsGithubComEgorminTcAgentToolsSyncRefsHeadsMaster")
 
+    }
+
+    steps {
+        script {
+            scriptContent = """
+                ls
+                pwd 
+                hostname
+            """.trimIndent()
+        }
     }
 
     triggers {
